@@ -1,33 +1,38 @@
-{
-  "name": "Python 3",
-  // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-  "image": "mcr.microsoft.com/devcontainers/python:1-3.11-bullseye",
-  "customizations": {
-    "codespaces": {
-      "openFiles": [
-        "README.md",
-        "streamlit_app.py"
-      ]
-    },
-    "vscode": {
-      "settings": {},
-      "extensions": [
-        "ms-python.python",
-        "ms-python.vscode-pylance"
-      ]
-    }
-  },
-  "updateContentCommand": "[ -f packages.txt ] && sudo apt update && sudo apt upgrade -y && sudo xargs apt install -y <packages.txt; [ -f requirements.txt ] && pip3 install --user -r requirements.txt; pip3 install --user streamlit; echo '✅ Packages installed and Requirements met'",
-  "postAttachCommand": {
-    "server": "streamlit run streamlit_app.py --server.enableCORS false --server.enableXsrfProtection false"
-  },
-  "portsAttributes": {
-    "8501": {
-      "label": "Application",
-      "onAutoForward": "openPreview"
-    }
-  },
-  "forwardPorts": [
-    8501
-  ]
-}
+import streamlit as st
+
+# Configuración de la página
+st.set_page_config(page_title="Tanya Odisea", page_icon="🕵️‍♀️", layout="wide")
+
+# Estilo personalizado
+st.markdown("""
+    <style>
+        .main {
+                background-color: #0e1117;
+                    }
+                        .stButton>button {
+                                width: 100%;
+                                        border-radius: 5px;
+                                                height: 3em;
+                                                        background-color: #ff4b4b;
+                                                                color: white;
+                                                                    }
+                                                                        </style>
+                                                                            """, unsafe_class_name=True)
+
+                                                                            # Título principal
+                                                                            st.title("🕵️‍♀️ Tanya Odisea")
+                                                                            st.subheader("Sistema de Perfilación Criminal y Negociación Crítica")
+
+                                                                            # Menú Lateral
+                                                                            with st.sidebar:
+                                                                                st.image("https://www.gstatic.com/lamda/images/gemini_sparkle_v002_d47353039331e16a02ad.svg", width=50)
+                                                                                    st.title("Panel de Control")
+                                                                                        opcion = st.radio("Metodología:", 
+                                                                                                             ["Inicio", "Perfilación Inductiva (FBI)", "Negociación (Chris Voss)", "Análisis de Escena"])
+                                                                                                                 st.info("Estado: Operativa")
+
+                                                                                                                 # Lógica del Menú
+                                                                                                                 if opcion == "Inicio":
+                                                                                                                     st.write("### Bienvenido, Jefe.")
+                                                                                                                         st.write("Tanya está lista para procesar datos de comportamiento y perfiles psicológicos.")
+                                                                                                                         
